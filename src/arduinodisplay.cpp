@@ -10,21 +10,13 @@
 namespace fds {
 namespace display {
 
-
 U8G2_SSD1306_128X32_UNIVISION_1_HW_I2C u8g2(U8G2_R0);
 
 static bool isdisplaystarting = false;
 static uint8_t todisplay = 0;
 static char* formated;
 
-void twolines() {
-  u8g2.setFont(DISPLAY_FONT_TWO_LINES);
-  formated = fds::format::get(0);
-  u8g2.drawStr(0, DISPLAY_TWO_LINES_Y1, formated);
-  u8g2.setFont(DISPLAY_FONT_TWO_LINES);
-  formated = fds::format::get(1);
-  u8g2.drawStr(0, DISPLAY_TWO_LINES_Y2, formated);
-}
+static void twolines();
 
 void logo(u8g2_uint_t w, u8g2_uint_t h, const uint8_t *bitmap) {
   // picture loop
@@ -61,6 +53,15 @@ void loop() {
       todisplay = 0;
     }
   }
+}
+
+void twolines() {
+  u8g2.setFont(DISPLAY_FONT_TWO_LINES);
+  formated = fds::format::get(0);
+  u8g2.drawStr(0, DISPLAY_TWO_LINES_Y1, formated);
+  u8g2.setFont(DISPLAY_FONT_TWO_LINES);
+  formated = fds::format::get(1);
+  u8g2.drawStr(0, DISPLAY_TWO_LINES_Y2, formated);
 }
 
 }
