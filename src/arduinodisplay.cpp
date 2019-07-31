@@ -16,6 +16,7 @@ static bool isdisplaystarting = false;
 static uint8_t todisplay = 0;
 static char* formated;
 
+static void oneline();
 static void twolines();
 
 void logo(u8g2_uint_t w, u8g2_uint_t h, const uint8_t *bitmap) {
@@ -44,6 +45,9 @@ void loop() {
     }
 
     switch(todisplay) {
+    case 1:
+      oneline();
+      break;
     case 2:
       twolines();
       break;
@@ -53,6 +57,12 @@ void loop() {
       todisplay = 0;
     }
   }
+}
+
+void oneline() {
+  u8g2.setFont(DISPLAY_FONT_ONE_LINE);
+  formated = fds::format::get(0);
+  u8g2.drawStr(DISPLAY_ONE_LINE_X, DISPLAY_ONE_LINE_Y, formated);
 }
 
 void twolines() {

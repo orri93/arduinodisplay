@@ -3,6 +3,16 @@
 
 #include <U8g2lib.h>
 
+#ifndef DISPLAY_FONT_ONE_LINE
+#define DISPLAY_FONT_ONE_LINE u8g2_font_cardimon_pixel_tf
+#endif
+#ifndef DISPLAY_ONE_LINE_Y
+#define DISPLAY_ONE_LINE_Y     31
+#endif
+#ifndef DISPLAY_ONE_LINE_X
+#define DISPLAY_ONE_LINE_X      0
+#endif
+
 #ifndef DISPLAY_FONT_TWO_LINES
 #define DISPLAY_FONT_TWO_LINES u8g2_font_profont22_mf
 #endif
